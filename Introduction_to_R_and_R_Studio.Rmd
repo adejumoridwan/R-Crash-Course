@@ -1,0 +1,27 @@
+---
+title: "Introduction to R and R studio"
+author: "Adejumo Ridwan Suleiman"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Introduction to R and R studio
+
+- R is a programming language used for statistical computing, graphical representation, analysis and visualization of data.
+- R studio is an IDE(Integrated Developoment Environment) that provides facilities to make R easier to use and also perform operations such as software testing and also detecting errors in your programs.
+
+# Why do we use R
+
+- R is used for data analysis, data visualization and machine learning.
+- R is used for statistical analysis
+- It is open source and free.
+- It has a large community support
+- Availability of various packages for solving various problems.
+
+# Installing R and R studio
+
+- You can download R by going to the R website https://cloud.r-project.org/ and R studio from https://www.rstudio.com/products/rstudio/download/#download. 
+
+- R and R studio are easy to install and you should not encounter any problem installing them, so far you followed the instructions provided carefully.
+
+

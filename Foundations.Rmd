@@ -1,0 +1,397 @@
+---
+title: "Foundations"
+author: "Adejumo Ridwan Suleiman"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+## Your first R syntax
+
+```{r}
+# Outputting strings
+"Hello World"
+
+# Outputting numbers
+3
+2
+5
+
+```
+## Print
+
+Unlike other programming languages, you can output a code without using the print function thought it has the print function and it is will be advisable if you get used to using it so as to develop a good programming habit.
+```{r}
+# printing strings 
+print("Hello World")
+
+# printing numbers
+print(3)
+print(5)
+print(6)
+```
+
+## comments
+- When writing a script, R is going to execute anything written and might return an error if it can't understand what was written. 
+- This is where we use comments, they are useful for explaining code to others that will like to view our code.
+- Comments allow us to tell R not to execute a particular line of code especially in scenarios where we want to test alternative code.
+
+```{r}
+# This is an example of a comment
+
+# This is a code that I don't want R to execute
+# Hello World
+# 332
+```
+
+- Unlike other programming languages, R does not have a provision for multi-line comments.
+- To be able to write a multi-line comment, each line has to start with an #.
+
+```{r}
+# The Quick Brown Fox
+# Jumps over a Lazy Dog
+```
+
+## Variables
+
+- R variables are just like containers for storing data values.
+- To declare a variable in R, you just need to assign values to the variables.
+- If you want to output the variable you either type the name of the variable and run it or use the print function to print the variable name.
+
+```{r}
+name <- "Joseph"
+age <- "32"
+
+# calling by name
+name
+age
+
+# calling using the print function
+print(name)
+print(age)
+```
+
+- You can also use the `=` in R for assignment but sometimes R takes it as a taboo in some situations and hence it is not advisable to get used to using it.
+
+### Concatenate
+
+- I will like to introduce your first function in R, this allows you to join various elements and assign it to a variable.
+```{r}
+name <- "Joseph"
+age <- 23
+
+paste("My name is", name, "and I am", 23, "years old")
+
+```
+
+### Multiple variable
+You can assign a single value to multiple variables in a single line.
+```{r}
+variable1 <- variable2 <- variable3 <- "Pineapple"
+```
+
+### Rules when naming a variable.
+
+Rules are meant to be broken but not when it comes to naming variables in R, A variable name has to satisdy the following rules to be considered valid by R.
+- It can only start with a letter or a period(.), if it starts with a period it can not be followed by a digit.
+- It can be a letter or a word or a combination of letters, digits, undersore(_) and periods(.) 
+- A variable name can not start with an underscore(_)
+- R is case sensitive and as such a variable such as "Age" and "age" are not the same thing.
+- Reserved words in R such as (TRUE, FALSE, if, for, ...) can't be used as variable names.
+```{r}
+#valid variable names
+myvar <- "Apple"
+my_var <- "Apple"
+myVar <- "Apple"
+MYVAR <- "Apple"
+myvar2 <- "Apple"
+.myvar <- "Apple"
+
+#invalid variable names
+2myvar <- "Apple"
+my-var <- "Apple"
+my var <- "Apple"
+_my_var <- "Apple"
+my_v@ar <- "Apple"
+TRUE <- "Apple"
+```
+
+## Data Types
+- Variables can be stored in R into various data types to perform different things.
+- There is no need of declaring a variable with a specific data type and they can even change even after been set.
+
+```{r}
+variable <- 30
+variable <- "Johnson"
+```
+
+### Basic Data Types in R
+- numeric e.g (10.5,55,787)
+- integer e.g (34L,2L,1L) The L declared the digit as an integer
+- complex e.g (9 + 3i, where "i" is the imaginary part)
+- character also known as strings e.g ("monkey", "lion")
+- logical also known as boolean e.g (TRUE or FALSE)
+
+The class function is used to check the data type of a variable
+
+```{r}
+#numeric
+a <- 34
+class(a)
+
+#integer
+b <- 10L
+class(b)
+
+#complex
+c <- 9i + 3
+class(c)
+
+#character/string
+d <- "I am human"
+class(d)
+
+#logical/boolean
+e <- TRUE
+class(e)
+
+
+
+
+```
+
+## Numbers
+
+R represents numbers in 3 different ways:
+- numeric
+- integer
+- complex
+
+### Numeric
+This is one of the most common data type in R, these are numbers which contains decimals
+```{r}
+x <- 10.5
+y <- 4.3
+
+x
+y
+
+class(x)
+class(y)
+```
+
+
+### Integer
+These are numeric data type without decimals. The letter L must be used after an integer value to create the integer variable.
+```{r}
+x <- 20L
+y <- 4L
+
+x
+y
+
+class(x)
+class(y)
+```
+
+### Complex
+These data types are numbers which must be written with an "i", where i is the imaginary part.
+```{r}
+x <- 2+2i
+y <- 9i
+
+# Print values of x and y
+x
+y
+
+# Print the class name of x and y
+class(x)
+class(y) 
+```
+
+### Type conversion
+The following functions are used to convert from one number data type to another:
+- `as.numeric()`convert a number data type to numeric
+- `as.integer()`convert an integer data type to integer
+- `as.complex()`convert a complex data type to integer
+
+```{r}
+a <- 14L # integer
+b <- 22 # numeric
+
+# convert from integer to numeric:
+x <- as.numeric(a)
+
+# convert from numeric to integer:
+y <- as.integer(b)
+
+# print values of x and y
+x
+y
+
+# print the class name of a and b
+class(x)
+class(y) 
+```
+
+
+## Strings
+Character of strings are data types that contains text, they are either enclosed in 'single quotes' or "double quotes".
+```{r}
+# single line string
+'hello'
+"hello"
+
+# multiline string
+story <- "The quick brown,
+fox jumps over a lazy dog"
+
+story
+```
+Unfortunately R add a "/n" which is called an escape character at the end of each line break. The "n" indicates a new line. If you want the output to show exactly as it was written, you use the `cat` function.
+```{r}
+story <- "The quick brown,
+fox jumps over a lazy dog"
+
+cat(story)
+```
+
+# String Length
+using the nchar function, we check for the number of characters in an R string.
+```{r}
+nchar(story)
+```
+
+# Check a string
+Sometimes we want to know if a particular character or sequence of characters is present in a string, this is where we use the `grepl` function.
+```{r}
+grepl("H", story)
+
+grepl("brown",story)
+
+grepl("bro", story)
+
+```
+
+# Escape characters
+The escape character `\` also know as the backlash is used anytime you want to omit a forbidden character in a string. For example you can not use double quotes when your string is enclosed in double quotes. It returns an error saying an unexpected symbol is present in your strings. This is where the `\` plays an important role
+```{r}
+string <- "I am not a coward I am a "Warrior""
+
+string <- "I am not a coward I am a \"Warrior\""
+```
+
+What if we also want the backslash to function as an escape character but just a regular backslash.
+```{r}
+"I am not a \coward"
+
+#print with backslash
+"I am not a \\coward"
+
+#print without backslash
+cat("I am not a \\coward")
+```
+
+# Booleans
+Booleans are logical values, and logical values are either TRUE of FALSE. 
+```{r}
+10 > 9
+
+15 == 43
+
+32 < 23
+```
+
+
+## R Arithmetic Operators
+These operators are used for performing common mathematical operations in R:
+- `+` Addition
+- `-` Subtraction
+- `*` Multiplication
+- `/` Division
+- `^` Exponent
+- `%%` Modulus
+- `%/%` Integer Division
+
+```{r}
+x=5
+y=3
+#addition
+x + y
+
+#substraction
+x - y
+
+#multiplaction
+x*y
+
+#division
+x/y
+
+#exponent
+x^y
+
+#modulus
+x%%y
+
+#integer division
+x%/%y
+
+```
+
+## Comparison Operators
+These allows you to compare two values.
+- `==` equality
+- `!=` inequality
+- `>` greater than
+- `<` less than
+- `>=` Greater than or equal to
+- `<=` Less than or equal to 
+```{r}
+a <- 5
+
+```
+
+
+
+
+
+
+
+
+
+
+## Mathematical operations in R
+You can perfom basic mathematical operations in R such as addition, multiplication, division and subtraction.
+```{r}
+#addition
+5+4
+
+#subtraction
+4-2
+
+#multiplication
+8-2
+
+#division
+4/2
+```
+
+You can also perform operations such as square root, raise to the power e.t.c
+```{r}
+#squareroot
+sqrt(4)
+
+#square
+4^2
+
+#absolute value
+abs(-5)
+
+#ceiling rounds a number upwards the nearest integer
+ceiling(1.4778)
+
+#floor rounds a number downwards to the nearest integer
+floor(1.4778)
+
+
+```
