@@ -347,9 +347,174 @@ These allows you to compare two values.
 - `>=` Greater than or equal to
 - `<=` Less than or equal to 
 ```{r}
-a <- 5
+a = 8
+#equality
+a == 5
+
+#not equal
+a != 7
+
+# greater than
+a > 7
+
+# less than 
+a < 9
+
+# greater than or equal to 
+a >= 3
+
+#less than or equal to 
+a <= 3
 
 ```
+
+## Logical Operators
+These are operators combined with logical statements
+- `&` AND (returns TRUE is both statements are TRUE)
+- `|` OR (returns TRUE if one of the statements is TRUE)
+- `!` NOT (returns FALSE if statement is TRUE)
+
+```{r}
+a = 2
+
+# AND
+(a == 4) & (a == 2)
+
+# OR
+(a == 4) | (a == 2)
+
+# NOT
+a != 3
+```
+
+#Conditionals
+
+### IF Statements
+The IF keyword is used to specify a block of code to be executed if a conditon is TRUE:
+```{r}
+a <- 3
+b <- 6
+
+if (a < b){
+  print("a is less than b")
+}
+```
+
+### ElseIf
+The `else if` is used if the previous condition in the `if` statement are not true, then try this condition
+```{r}
+a <- 3
+b <- 3
+
+if (a < b){
+  print("a is less than b")
+} else if (a = b){
+  print("a is equal to b")
+}
+```
+
+### Else
+The `else` keyword catches anything which is not caught by the preceding conditions.
+```{r}
+a <- 200
+b <- 33
+
+if (b > a) {
+  print("b is greater than a")
+} else if (a == b) {
+  print("a and b are equal")
+} else {
+  print("a is greater than b")
+} 
+```
+
+
+### Nested If Statements
+You can also have an if statements inside if statements, this is called a nested if statements.
+```{r}
+x <- 40
+
+if (x > 32) {
+  print("Above ten")
+  if (x > 30) {
+    print("and also above 30!")
+  } else {
+    print("but not above 30.")
+  }
+} else {
+  print("below 5")
+} 
+```
+
+### AND and OR
+The logical operator `&` and `|` let's us combine conditional statements.
+```{r}
+a <- 40
+b <- 33
+c <- 50
+
+if (a > b & c > a){
+  print("Both conditions are true")
+} 
+
+if (a > b | c > a){
+  print("Both conditions are true")
+} 
+
+```
+## While Loop
+The while loop is used execute a block of code provided a specified condition remains true.
+```{r}
+i <- 2
+
+while (i < 6) {
+  print(i)
+  i <- i + 2
+}
+
+# combining with if
+dice <- 1
+while (dice <= 6) {
+  if (dice < 6) {
+    print("No Yahtzee")
+  } else {
+    print("Yahtzee!")
+  }
+  dice <- dice + 1
+} 
+
+
+```
+
+#For loops
+Unlike while loops, for loops is used to iterate over a sequence
+```{r}
+household <- list("daddy","mummy","son","daughter")
+
+for (family_member in household) {
+  print(family_member)
+}
+
+
+```
+
+## Functions 
+- A block of code that runs when called is called a function.
+- Information passed to a function are known as parameters
+```{r}
+# function to blend a fruit juice
+blender <- function(orange, mango, banana){
+  juice = orange + mango + banana
+  juice
+}
+```
+
+
+
+
+
+
+
 
 
 

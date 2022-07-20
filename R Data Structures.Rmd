@@ -1,0 +1,101 @@
+---
+title: "R Data Structures"
+author: "Adejumo Ridwan Suleiman"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+## Vectors
+- A vector is a type of data type in R that combines elements of the same data types
+- The c() function is use to create a vector
+- Let's say we have a basket containing fruits, we can use a vector to represent it below
+```{r}
+basket <- c("mango", "orange", "banana", "pineapple")
+basket
+```
+- When we put a numerical value in the above vector, the vector converts it into a string or charactert element. It is no more a numerical value and this is due to the fact that all elements of a vector must be of the same data type.
+```{r}
+basket <- c(4, "orange", "banana", "pineapple")
+basket
+```
+- We can also combine numerical elements using the c() function or we can use a colon (:) if the element are in a sequence.
+```{r}
+die = c(1,2,3,4,5,6)
+#or
+die = 1:6
+
+```
+
+- To know the lenght of our vector we use the length() function
+```{r}
+length(basket)
+length(die)
+```
+- We can access the elements in a vector using indexing, each element in a vector has a unique position called index. To access this element we call it's position. The first item has an index 1, the next 2 and so on.
+- To call more than one elements, we use the c() also.
+```{r}
+#call a single element
+basket[2]
+die[3]
+
+# call multiple elements
+basket[c(3,4)]
+```
+- You can also change an item in a position by calling that element in that position using it's index and assigning it to a new value.
+```{r}
+basket[1] <- "apple"
+basket
+```
+## Lists
+- Unlike the vector, the list is used to combine elements of various data types.
+- A list is created using the list function
+```{r}
+die_and_basket <- list("orange",1,2,"apple","lemon",3,4,5,"pear",6)
+die_and_basket
+```
+- A list can be accessed also with indexing using the square brackets. The first item has an index 1, the next 2 and so on.
+```{r}
+die_and_basket[2]
+```
+- To change an item value in a list, you refer to the index number and assign it a new value.
+```{r}
+die_and_basket[3] <- "pawpaw"
+die_and_basket
+```
+- You can get the length of a list using the length() function.
+```{r}
+length(die_and_basket)
+```
+- To add an item to a list, you use the append function
+```{r}
+append(die_and_basket, "guava")
+```
+- To remove an item in a list, you use a negative indexing and ovewrite the previous list with the new list
+```{r}
+die_and_basket
+new_die_and_basket <- die_and_basket[-3]
+new_die_and_basket
+```
+- You can also loop through a list using a for loop
+```{r}
+for (i in die_and_basket){
+  print(i)
+}
+```
+- Two lists can be joined using the c() function.
+```{r}
+list_1 <- list(1,"boy")
+list_2 <- list(4,"girl")
+list_3 <- c(list_1,list_2)
+list_3
+```
+
+## Matrices
+
+
+
+
+
+
+
+
