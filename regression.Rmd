@@ -1,0 +1,110 @@
+---
+title: "Statistics"
+author: "Adejumo Ridwan Suleiman"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Linear Regression
+```{r}
+mod <- lm(Volume ~ Girth + Height, data = trees)
+summary(mod)
+anova(mod)
+```
+If the girth increases by 1 inch the volume increases by 5 cube ft
+
+# Binomial regression
+```{r}
+library(mlbench)
+
+#Load breast cancer dataset
+data("BreastCancer")
+
+BreastCancer$Class <- dplyr::recode(BreastCancer$Class, 
+                             benign = 1,
+                             malignant = 2)
+
+test <- glm(data = BreastCancer, Class ~ Cell.shape)
+summary(test)
+```
+
+# Multinomial regression
+
+```{r}
+library(nnet)
+
+model <- multinom(data = iris, Species ~ .)
+summary(model)
+summary(glm(data = iris, Species ~ .), family = )
+
+iris$Species <- recode(iris$Species, setosa = 1, versicolor = 2, virginica = 3)
+
+```
+
+# chi-square
+```{r}
+# Load the library.
+library("MASS")
+
+# Create a data frame from the main data set.
+car.data <- data.frame(Cars93$AirBags, Cars93$Type)
+
+# Create a table with the needed variables.
+car.data = table(Cars93$AirBags, Cars93$Type) 
+print(car.data)
+
+# Perform the Chi-Square test.
+print(chisq.test(car.data))
+```
+
+# One Sample T test
+```{r}
+library(ggplot2)
+
+#mean price of diamonds
+mean(diamonds$price)
+
+#t.test
+t.test(x = sample(diamonds$price, 1000), mu = 3932.8)
+```
+
+# Paired Sample T-test
+- Scores of students in two different subjects
+- Drug trial of patients
+```{r}
+t.test(x = sample(diamonds$price, 1000),
+       y = sample(diamonds$price, 1000),
+       paired = TRUE)
+```
+
+# Independent Sample T test
+- Scores of students in different schools
+```{r}
+t.test(x = sample(diamonds$price, 1000),
+       y = sample(diamonds$price, 1000),
+       var.equal = TRUE)
+```
+
+# ANOVA
+```{r}
+data <- ToothGrowth
+#convert dose to factor
+data$dose <- factor(data$dose,
+                  levels = c(0.5, 1, 2),
+                  labels = c("D0.5", "D1", "D2"))
+str(data)
+
+#anova analysis (no interaction)
+res.aov2 <- aov(len ~ supp + dose, data = data)
+summary(res.aov2)
+
+#anova with interaction
+res.aov3 <- aov(len ~ supp * dose, data = data)
+summary(res.aov3)
+
+#turkey test
+TukeyHSD(res.aov2, which = "dose")
+```
+
+
+

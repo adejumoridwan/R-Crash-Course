@@ -1,0 +1,90 @@
+---
+title: "Data Visualization"
+author: "Adejumo Ridwan Suleiman"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Pie Chart
+pie(X, Labels, Radius, Main, Col, Clockwise)  
+
+- X is a vector that contains the numeric values used in the pie chart.
+- Labels are used to give the description to the slices.
+- Radius describes the radius of the pie chart.
+- Main describes the title of the chart.
+- Col defines the color palette.
+- Clockwise is a logical value that indicates the clockwise or anti-clockwise direction in which slices are drawn.
+
+```{r}
+# Creating data for the graph.  
+x <- c(20, 65, 15, 50)  
+labels <- c("India", "America", "Shri Lanka", "Nepal")  
+
+# Plotting the chart.  
+pie(x,labels)  
+```
+
+```{r}
+# Creating data for the graph.  
+x <- c(20, 65, 15, 50)  
+labels <- c("India", "America", "Shri Lanka", "Nepal")  
+  
+# Plotting the chart.  
+pie(x,labels,main="Country Pie chart",col=rainbow(length(x)))  
+```
+```{r}
+# Creating data for the graph.  
+x <- c(20, 65, 15, 50)  
+labels <- c("India", "America", "Shri Lanka", "Nepal")  
+pie_percent<- round(100*x/sum(x), 1)  
+
+# Plotting the chart.  
+pie(x, 
+    labels = pie_percent, 
+    main = "Country Pie Chart",
+    col = rainbow(length(x))) 
+
+legend("topright", 
+       c("India", "America", "Shri Lanka", "Nepal"), 
+       cex = 0.8,
+       fill = rainbow(length(x)))  
+```
+
+# Bar Plot
+barplot(h,x,y,main, names.arg,col)  
+
+```{r}
+# Creating the data for Bar chart  
+H<- c(12,35,54,3,41)  
+
+# Plotting the bar chart   
+barplot(H)  
+
+head(mtcars)
+
+```
+
+```{r}
+# Creating the data for Bar chart  
+H <- c(12,35,54,3,41)  
+M<- c("Feb","Mar","Apr","May","Jun")  
+  
+
+# Plotting the bar chart   
+barplot(H,
+        names.arg=M,
+        xlab="Month",
+        ylab="Revenue",
+        col="Green",  
+        main="Revenue Bar chart",
+        border="red") 
+
+
+```
+
+# Scatterplot
+
+```{r}
+
+```
+

@@ -91,6 +91,167 @@ list_3
 ```
 
 ## Matrices
+- A matrix is a two dimensional data struture with rows and columns.
+- A matrix can be generated using the matrix() function
+```{r}
+my_matrix <- matrix(c(1,2,3,4,5,6), nrow = 3, ncol = 2)
+my_matrix
+```
+- Matrix can also be created with strings or characters.
+```{r}
+my_second_matrix <- matrix(c("boy","man","girl","woman"), nrow = 2, ncol = 2)
+my_second_matrix
+```
+- To access the items in a matrix, you use the square brackets.
+- The first number in the bracket specifies the row position while the second number in the bracket specifies the column position.
+```{r}
+#to access the element in row 1 and column 2 of my_matrix
+my_matrix[1,2]
+
+# to access the element in row 2 and column of 1 of my_second_matrix
+my_second_matrix[2,1]
+
+# to access the whole row in column 1 of my_matrix
+my_matrix[,1]
+
+# to access the whole column in row 1 of my_matrix
+my_matrix[1,]
+
+# to access more than one row
+my_matrix[c(1,2),]
+
+# to access more than one column and row
+my_matrix[c(1,2),c(1,2)]
+```
+
+- You can add more rows and columns to a matrix using the cbind() for column addition and rbind() for row addition column.
+```{r}
+#add a new column
+my_matrix <- cbind(my_matrix, c("animal","men","fairies"))
+my_matrix
+
+#add a new row
+my_matrix <- rbind(my_matrix, c("car", "bike", "van"))
+my_matrix
+```
+
+- 
+```{r}
+# remove rows and columns
+my_matrix <- my_matrix[-c(1),-c(3)]
+my_matrix
+
+#Check if an item is in the matrix using %in%
+"car" %in% my_matrix
+
+#Check for the dimension of the rows and columns
+dim(my_matrix)
+
+#check for the lenght of a matrix
+length(my_matrix)
+
+```
+## Data Frames
+- Data frame are data structures used to display data in a tabular format.
+- In a data frame contains columns with different data types but each column must carry the same type of data.
+- A data frame is created using the data.frame() function.
+```{r}
+my_dataFrame <- data.frame(
+  Names = c("Jacob", "Mary","Seth"),
+  Age = c(20,14,23),
+  Sex = c("Male","Female","Male"),
+  Married = c(TRUE, FALSE, TRUE)
+)
+my_dataFrame
+
+```
+- To summarize the data, we use the summary() function
+```{r}
+summary(my_dataFrame)
+my_dataFrame[[2]]
+```
+- To Access columns in the dataframe we use the [] brackets, [[]] brackets or $ sign
+```{r}
+my_dataFrame["Age"]
+my_dataFrame[["Age"]] #returns the column as a vector
+my_dataFrame$Age
+
+```
+- To add rows and columns we can use the rbind() and cbind() function respectively just like in the matrix.
+```{r}
+# add rows
+new_dataframe <- rbind(my_dataFrame, c("Alice", 18, "Female", TRUE))
+new_dataframe
+
+another_dataframe <- cbind(my_dataFrame, Education = c("Bachelors","HighSchool","PhD"))
+another_dataframe
+```
+- To remove rows and columns we using negative indexing
+```{r}
+#remove first row and column
+remove <- my_dataFrame[-1,-1]
+remove
+
+```
+- Amount of rows and columns can be checked using the dim() function or nrow() and ncol() for number of rows and columns respectively
+```{r}
+dim(my_dataFrame)
+nrow(my_dataFrame)
+ncol(my_dataFrame)
+```
+- you can combine two data frames together either by rows using the rbind() function or by columns using the cbind() function.
+```{r}
+#combine by column
+my_dataFrame <- data.frame(
+  Names = c("Jacob", "Mary","Seth"),
+  Age = c(20,14,23)
+)
+second_dataframe <- data.frame(
+  Sex = c("Male","Female","Male"),
+  Married = c(TRUE, FALSE, TRUE)
+)
+third_dataframe <- cbind(my_dataFrame, second_dataframe)
+third_dataframe
+```
+```{r}
+#combine by row
+myrow_dataFrame <- data.frame(
+  Names = c("Jacob", "Mary","Seth"),
+  Age = c(20,14,23),
+  Sex = c("Male","Female","Male"),
+  Married = c(TRUE, FALSE, TRUE)
+)
+second_row_dataframe <- data.frame(
+  Names = c("John", "Chris","David"),
+  Age = c(13,23,22),
+  Sex = c("Male","Female","Male"),
+  Married = c(TRUE, FALSE, TRUE)
+)
+
+third_row_dataframe <- rbind(myrow_dataFrame, second_row_dataframe)
+third_row_dataframe
+```
+
+## Factors
+- Factors are data type expressed categorically e.g
+* Sex: Male or Female
+* Temperature Level: High, Medium and Low
+* Size: Big or Small
+- A factor is created using the factor() function
+```{r}
+Temperature <- factor(c("High","High","Low","Medium","Low","Medium","High"))
+Temperature
+```
+- Above we have 7 elements but 3 levels.
+- To access the levels of a factor we use the levels function
+```{r}
+levels(Temperature)
+```
+- To assign levels we can use the levels arguments in the function.
+```{r}
+Temperature <- factor(c("High","High","Low","Medium","Low","Medium","High"), levels = c("High","Medium","Low"))
+Temperature
+```
 
 
 
@@ -99,3 +260,5 @@ list_3
 
 
 
+
+ 
